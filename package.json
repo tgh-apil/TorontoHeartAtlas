@@ -4,7 +4,7 @@
   "description": "testing torontoheartatlas",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "yarn"
   },
   "repository": {
     "type": "git",
@@ -20,10 +20,8 @@
   },
   "homepage": "https://github.com/tgh-apil/TorontoHeartAtlas#readme",
   "devDependencies": {
-    "jest": "^25.1.0"
-  },
-  "dependencies": {
     "add": "^2.0.6",
     "yarn": "^1.22.0"
   }
+  
 }
