@@ -1,0 +1,25 @@
+{
+  "name": "torontoheartatlas",
+  "version": "1.0.0",
+  "description": "testing torontoheartatlas",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tgh-apil/TorontoHeartAtlas.git"
+  },
+  "keywords": [
+    "testing"
+  ],
+  "author": "Sachin Khargie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tgh-apil/TorontoHeartAtlas/issues"
+  },
+  "homepage": "https://github.com/tgh-apil/TorontoHeartAtlas#readme",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
+}
