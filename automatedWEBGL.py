@@ -1,6 +1,6 @@
 name = input('what would you like to name the Web GL File? ')
 
-choice = input('How many objs or stls are there for the model ')
+choice = input('How many objs or stls are there for the model? ')
 
 f = open(name,'w')
 
