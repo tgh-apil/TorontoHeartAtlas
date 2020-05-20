@@ -1,4 +1,4 @@
-name = input('what would you like to name the file? ')
+name = input('what would you like to name the Web GL File? ')
 
 
 f = open(name,'w')
