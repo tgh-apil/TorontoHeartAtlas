@@ -9,7 +9,7 @@ if myoSwitch == "yes":
 <html lang="en">
 
 <head>
-	<title>three.js webgl - orbit controls</title>
+	<title>2018001 Myocardium</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<!--<link type="text/css" rel="stylesheet" href="index.css">-->
@@ -24,86 +24,19 @@ if myoSwitch == "yes":
 			color: #f00;
 		}
 
-		.aorta {
-			background-color: #FFFF00;
-			/* Yellow background */
-			border: 1px solid yellow;
-			/* yellow border */
-			color: black;
-			/* White text */
-			padding: 10px 24px;
-			/* Some padding */
-			cursor: pointer;
-			/* Pointer/hand icon */
-
-		}
-
-		.pulmonaryArtery {
-			background-color: #4CAF50;
-			/* Green background */
-			border: 1px solid green;
-			/* Green border */
-			color: white;
-			/* White text */
-			padding: 10px 24px;
-			/* Some padding */
-			cursor: pointer;
-			/* Pointer/hand icon */
-
-		}
-
-		.leftAtrium {
-			background-color: #FFA500;
-			/* Orange background */
-			border: 1px solid orange;
-			/* Orange border */
-			color: white;
-			/* White text */
-			padding: 10px 24px;
-			/* Some padding */
-			cursor: pointer;
-			/* Pointer/hand icon */
-		}
-
-		.rightAtrium {
-			background-color: #add8e6;
-			/* Light Blue background */
-			border: 1px solid lightBlue;
-			/* Light Blue border */
-			color: white;
-			/* White text */
-			padding: 10px 24px;
-			/* Some padding */
-			cursor: pointer;
-			/* Pointer/hand icon */
-		}
-
-		.leftVentricle {
-			background-color: #ff0000;
-			/* Red background */
-			border: 1px solid red;
-			/* Red border */
-			color: white;
-			/* White text */
-			padding: 10px 24px;
-			/* Some padding */
-			cursor: pointer;
-			/* Pointer/hand icon */
-		}
-
-		.rightVentricle{
-			background-color: blue;
-			border: 1px blue solid;
-			color: white;
-			padding: 10px 24px;
-			cursor: pointer;
-		}
-
 		.fontanMyo{
-			background-color: orange;
+			background-color: pink;
 			border: 1px orange solid;
 			color: white;
 			padding: 10px 24px; 
+			cursor: pointer;
+		}
+
+		.highRes {
+			background-color: blue; 
+			border: 1px blue solid; 
+			color: white; 
+			padding: 10px 24px;
 			cursor: pointer;
 		}
 
@@ -139,15 +72,17 @@ if myoSwitch == "yes":
 		<form> <input type = "checkbox" id = "myCheck2" onclick="alert('you clicked')"> Toggle 2018003 </form>-->
 
 		<button class = "fontanMyo" id = "hideShow">Hide / Show 2018001-01 Myocardium</button>
+		<button class = "highRes" onclick="document.location = 'https://github.com/sachx1/TorontoHeartAtlas/blob/master/2018001MYO/2018001Myocard.obj'"> High Resolution Myocardium Download</button>
 
 	<script src="three.js"></script>
 	<script src="OrbitControls.js"></script>
-	<script src="GLTFLoader.js"></script>
+	
 	<script src="OBJLoader.js"></script>
 	<script src="WebGL.js"></script>
 
 
 	<script>
+		//<script src="GLTFLoader.js">
 		if (WEBGL.isWebGLAvailable() === false) {
 
 			document.body.appendChild(WEBGL.getWebGLErrorMessage());
@@ -230,11 +165,11 @@ if myoSwitch == "yes":
 
 			var oLoader = new THREE.OBJLoader();
 
-			oLoader.load('fontanMyocard.obj', function(object, materials) {
+			oLoader.load('2018001Myocard.obj', function(object, materials) {
 
 				// var material = new THREE.MeshFaceMaterial(materials);
 				var material2 = new THREE.MeshLambertMaterial({
-					color: 0xa65e00
+					color: 0xFFC0CB
 				});
 
 				object.traverse(function(child) {
@@ -263,15 +198,15 @@ if myoSwitch == "yes":
 
 			// lights
 
-			var light = new THREE.DirectionalLight(0xffffff, 2);
+			var light = new THREE.DirectionalLight(0xffffff, 1);
 			light.position.set(1, 1, 1);
 			scene.add(light);
 
-			var light = new THREE.DirectionalLight(0x002288, 1.5);
+			var light = new THREE.DirectionalLight(0x002288, 1);
 			light.position.set(-1, -1, -1);
 			scene.add(light);
 
-			var light = new THREE.DirectionalLight(0xffffff, 1.5);
+			var light = new THREE.DirectionalLight(0xffffff, 1);
 			light.position.set(-1, -1, -90);
 			scene.add(light);
 
@@ -325,6 +260,7 @@ if myoSwitch == "yes":
 </body>
 
 </html>
+
  """
     f.write(message)
     f.close()
@@ -339,7 +275,7 @@ if choice =='3':
 <html lang="en">
 
 <head>
-	<title>2018017-01 High Resolution</title>
+	<title>*Insert title here*</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<!--<link type="text/css" rel="stylesheet" href="index.css">-->
@@ -683,7 +619,7 @@ if choice == '4':
 <html lang="en">
 
 <head>
-	<title>2018018-01 High Resolution</title>
+	<title>*Insert Title Here*</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<!--<link type="text/css" rel="stylesheet" href="index.css">-->
@@ -1096,7 +1032,7 @@ if choice == '5':
 <html lang="en">
 
 <head>
-	<title>2018001-01</title>
+	<title>*Insert Title Here*</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<!--<link type="text/css" rel="stylesheet" href="index.css">-->
@@ -1528,7 +1464,7 @@ if choice == '6':
     message = """<!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>2018002-01 High Resolution</title>
+		<title>*Insert Title Here*</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
