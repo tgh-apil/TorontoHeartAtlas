@@ -58,6 +58,88 @@
 			/* Pointer/hand icon */
 		}
 
+		.sidebar{
+		position: fixed;
+		width: 200px;
+		top:0;
+		left: 0;
+		bottom: 0;
+		background: grey;
+		padding-top: 50px;
+		}
+
+		.sidebar h1{
+		display: block;
+		padding: 10px 20px;
+		color: #fff;
+		text-decoration: none;
+		font-family: "Rubik";
+		letter-spacing: 2px;
+		font-weight: 400;
+		margin: 0;
+		font-size: 20px;
+		text-transform: uppercase;
+		}
+
+		.sidebar a {
+		display: block;
+		padding: 10px 20px;
+		color: #bbb;
+		outline: none;
+		border: none;
+		background: none;
+		text-decoration: none;
+		font-family: "Rubik";
+		letter-spacing: 2px;
+		
+		}
+
+		.dropdown-btn{
+			font-size: 15px;
+		}
+
+		.sidebar a:hover{
+		color: #fff;
+		margin-left: 10px;
+		transition: 0.4s;
+		}
+
+		.sidebar a.hoverspeed:hover{
+			color: #fff;
+			margin-left: 7px;
+			transition: 0.4s;
+		}
+
+		.sidebar a.yellow{
+		background-color: yellow;
+		color:black;
+		}
+
+		.sidebar a.yellow:hover{
+		margin-left: 10px;
+		transition: 0.4s;
+		}
+
+		.sidebar a.red{
+		background-color: red;
+		color:black;
+		}
+
+		.sidebar a.red:hover{
+		margin-left: 10px;
+		transition: 0.4s;
+		}
+
+		.sidebar a.blue{
+			background-color: blue;
+			color: black;
+		}
+
+		.sidebar a.blue:hover{
+			margin-left: 10px; 
+			transition: 0.4s;
+		}
+
 	</style>
 </head>
 
@@ -78,14 +160,21 @@
   </div>
 </div>-->
 
-	<button class="aorta" id="hideShow">Hide / Show Aorta</button>
+	<!-- <button class="aorta" id="hideShow">Hide / Show Aorta</button>
 	<button class="atriaVentricle" id="hideShow2">Hide / Show Atria Ventricle</button>
-	<button class="venaCava" id="hideShow3">Hide / Show Vena Cava</button>
+	<button class="venaCava" id="hideShow3">Hide / Show Vena Cava</button> -->
 	
 
 	<!--<button type="button" id="hideShow9" onclick="hide2018001()">Hide buttons</button>
 		<form> <input type="checkbox" id="myCheck" onclick="hide2018002"> Toggle 2018002 </form>
 		<form> <input type = "checkbox" id = "myCheck2" onclick="alert('you clicked')"> Toggle 2018003 </form>-->
+
+		<div class="sidebar">
+			<a href="https://apil.ca/" class="hoverspeed"><img src="https://apillogo.s3.ca-central-1.amazonaws.com/APIL_LOGO.png" alt="Apil" width="175" height="75" style="vertical-align:left;margin:0px -5px"></a>
+			<a href="#Aorta" class="yellow" id="hideShow">Aorta</a>
+			<a href="#atriaVentricle" class="red" id="hideShow2">Atria Ventricle</a>
+			<a href="#venaCava" class="blue" id="hideShow3">Vena Cava</a>
+		</div>
 
 	<script src="three.js"></script>
 	<script src="OrbitControls.js"></script>
