@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<!--<link type="text/css" rel="stylesheet" href="index.css">-->
 	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
 		body {
 			/*background-color: #ccc;*/
 			background-color: black;
@@ -15,6 +16,57 @@
 
 		a {
 			color: #f00;
+		}
+
+		.overlay {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		background-color: rgb(0,0,0);
+		background-color: rgba(0,0,0, 0.9);
+		overflow-x: hidden;
+		transition: 0.5s;
+		}
+
+		.overlay-content {
+		position: relative;
+		top: 25%;
+		width: 100%;
+		text-align: center;
+		margin-top: 30px;
+		color: white;
+		}
+
+		.overlay a {
+		padding: 8px;
+		text-decoration: none;
+		font-size: 36px;
+		color: #818181;
+		display: block;
+		transition: 0.3s;
+		}
+
+		.overlay a:hover, .overlay a:focus {
+		color: #f1f1f1;
+		}
+
+		.overlay .closebtn {
+		position: absolute;
+		top: 20px;
+		right: 45px;
+		font-size: 60px;
+		}
+
+		@media screen and (max-height: 450px) {
+		.overlay a {font-size: 20px}
+		.overlay .closebtn {
+		font-size: 40px;
+		top: 15px;
+		right: 35px;
+		}
 		}
 
 		.aorta {
@@ -212,6 +264,13 @@
 		transition: 0.4s;
 		}
 
+		.sidebar a.info:hover{
+			background-color: black;
+			margin-left: 10px;
+			transition: 0.4s;
+		}
+
+
 
 	</style>
 </head>
@@ -252,6 +311,29 @@
 			<a href="#RightAtrium" class="skyBlue" id="hideShow3">Right Sub-Pulmonic Atrium</a>
 			<a href="#RightAtrium" class="red" id="hideShow5">Left Sub-Aortic Ventricle</a>
 			<a href="#LeftAtrium" class="blue" id="hideShow6">Right Sub-Aortic Ventricle</a>
+			<a href="#" class="info" onclick="openNav()">Information</a>
+			<div id="myNav" class="overlay">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<div class="overlay-content">
+				<h1>
+					Diagnosis
+				</h1>
+	
+				<p>1. Orientation: Situs inversus totalis; dextrocardia; Infero-posterior morphologic LV, <br>
+					supero-anterior morphologic RV; Right aortic arch with mirror-image branching <br> <br>
+					2. Segmental anatomy: Complex TGA: Concordant A-V, discordant V-A connections: posterior pulmonary valve, 
+					anterior aortic valve, with ventricular L-loop<br> <br>
+					3. Shunts: Secondum ASD; Membranous VSD <br> <br>
+					4. Pulmonary stenosis; subpulmonary outflow tract obstruction.</p>
+	
+				<h1>Procedure</h1>
+	
+				<p>1. Patch closure of membranous VSD, tunnel-like connection of LV to aorta; pulmonary valvotomy and excision of fibrous tissue from the RVOT, <br>
+					closure of secundum ASD; <br> <br>
+					2. Removal of VSD patch, Morrow-like incision on the ventricular septum; closure of VSD, <br>
+					Relief of subpulmonic outflow obstruction; transvenous atrial and ventricular pacemaker insertion</p>
+			</div>
+			</div>
 		</div>
 
 	<script src="three.js"></script>
@@ -262,6 +344,15 @@
 
 
 	<script>
+
+		function openNav() {
+		document.getElementById("myNav").style.width = "100%";
+		}
+
+		function closeNav() {
+		document.getElementById("myNav").style.width = "0%";
+		}
+
 		if (WEBGL.isWebGLAvailable() === false) {
 
 			document.body.appendChild(WEBGL.getWebGLErrorMessage());
