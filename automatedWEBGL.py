@@ -262,6 +262,7 @@ if myoSwitch == "yes":
 </html>
 
  """
+
     f.write(message)
     f.close()
     exit()
@@ -613,7 +614,8 @@ if choice =='3':
 
 </html>
  """
-    
+
+
 if choice == '4':
     message = """<!DOCTYPE html>
 <html lang="en">
