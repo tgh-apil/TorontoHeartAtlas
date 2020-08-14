@@ -33,40 +33,82 @@
 			cursor: pointer;
 		}
 
+		.sidebar{
+			position: fixed;
+			width: 200px;
+			top:0;
+			left: 0;
+			bottom: 0;
+			background: grey;
+			padding-top: 50px;
+			}
+	
+			.sidebar h1{
+			display: block;
+			padding: 10px 20px;
+			color: #fff;
+			text-decoration: none;
+			letter-spacing: 2px;
+			/*font-family: 'Krona One', sans-serif;*/
+			font-weight: 400;
+			margin: 0;
+			font-size: 20px;
+			text-transform: uppercase;
+			}
+	
+			.sidebar a {
+			display: block;
+			padding: 10px 20px;
+			color: #bbb;
+			outline: none;
+			border: none;
+			background: none;
+			text-decoration: none;
+			font-family: "Helvetica";
+			letter-spacing: 1px;
+			
+			}
+	
+			.dropdown-btn{
+				font-size: 15px;
+			}
+	
+			.sidebar a:hover{
+			color: #fff;
+			margin-left: 10px;
+			transition: 0.4s;
+			}
+	
+			.sidebar a.hoverspeed:hover{
+				color: #fff;
+				margin-left: 7px;
+				transition: 0.4s;
+			}
+	
+			.sidebar a.pink:hover{
+			background-color: pink;
+			color:black;
+			margin-left: 10px;
+			transition: 0.4s;
+			}
+	
+			.sidebar a.info:hover{
+				background-color: black;
+				margin-left: 10px;
+				transition: 0.4s;
+			}
+	
+
 	</style>
 </head>
 
 <body>
 
-
-	<!--<div class="dropdown">
-  <button class="dropbtn">2018001 FONTAN 1 Heart</button>
-  <div class="dropdown-content">
-
-
-    <a type="button" id="hideShow2">Hide / Show Pulmonary Artery</a>
-    <a type="button" id="hideShow3">Hide / Show Left Atrium</a>
-    <a type="button" id="hideShow4">Hide / Show Right Atrium</a>
-    <a type="button" id="hideShow5">Hide / Show Left Ventricle</a>
-    <a type="button" id="hideShow6">Hide / Show 2018001</a>
-		<a type="button" id="hideShow7" >Delete 2018001</a>
-  </div>
-</div>-->
-
-	<!--<button class="aorta" id="hideShow">Hide / Show Aorta</button>
-	<button class="pulmonaryArtery" id="hideShow2">Hide / Show Pulmonary Artery</button>
-	<button class="leftAtrium" id="hideShow3">Hide / Show Left Atrium</button>
-	<button class="rightAtrium" id="hideShow4">Hide / Show Right Atrium</button>
-	<button class="leftVentricle" id="hideShow5">Hide / Show Left Ventricle</button>
-	<button class="rightVentricle" id = "hideShow6">Hide / Show Right Ventricle</button>-->
-
-	<!--<button type="button" id="hideShow9" onclick="hide2018001()">Hide buttons</button>
-		<form> <input type="checkbox" id="myCheck" onclick="hide2018002"> Toggle 2018002 </form>
-		<form> <input type = "checkbox" id = "myCheck2" onclick="alert('you clicked')"> Toggle 2018003 </form>-->
-
-		<button class = "fontanMyo" id = "hideShow">Hide / Show 2018004-01 Myocardium</button>
-		<button class = "highRes" onclick="document.location = 'https://github.com/tgh-apil/TorontoHeartAtlas/blob/master/2018004-01MYO/2018004-01.obj'"> High Resolution Myocardium Download</button>
-		<button class = "highRes" onclick="document.location = 'https://github.com/tgh-apil/TorontoHeartAtlas/blob/master/2018004-01MYO/lowPoly2018004-01.obj'"> Low Resolution Myocardium Download</button>
+		<div class="sidebar">
+			<a href="https://apil.ca/" class="hoverspeed"><img src="https://apillogo.s3.ca-central-1.amazonaws.com/APIL_LOGO.png" alt="Apil" width="175" height="75" style="vertical-align:left;margin:0px -5px"></a>
+			<a class="pink" id="hideShow">2018004-01 Myocardium</a>
+			<a class = "info" onclick = "document.location = 'https://github.com/tgh-apil/TorontoHeartAtlas/blob/master/2018004-01MYO/lowPoly2018004-01.obj'">Low Resolution Download</a>
+		</div>
 
 	<script src="three.js"></script>
 	<script src="OrbitControls.js"></script>
@@ -82,25 +124,6 @@
 			document.body.appendChild(WEBGL.getWebGLErrorMessage());
 
 		}
-
-		function hide2018001() {
-			var x = document.getElementById("info2");
-			if (x.style.display === "none") {
-				x.style.display = "block";
-			} else {
-				x.style.display = "none";
-			}
-		}
-
-		function hide2018002() {
-			var y = document.getElementById("2018002");
-			if (y.style.display === "block") {
-				y.style.display = "none";
-			} else {
-				y.style.display = "block";
-			}
-		}
-
 
 		var camera, controls, scene, renderer, object, object2, object3, object4, object5;
 		var objhidden = false;
