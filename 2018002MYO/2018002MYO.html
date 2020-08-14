@@ -17,13 +17,13 @@
 			color: #f00;
 		}
 
-		.tofMyo{
+		/*.tofMyo{
 			background-color: pink;
 			border: 1px orange solid;
 			color: white;
 			padding: 10px 24px; 
 			cursor: pointer;
-		}
+		}*/
 
 		.highRes {
 			background-color: blue; 
@@ -32,6 +32,71 @@
 			padding: 10px 24px;
 			cursor: pointer;
 		}
+
+		.sidebar{
+			position: fixed;
+			width: 200px;
+			top:0;
+			left: 0;
+			bottom: 0;
+			background: grey;
+			padding-top: 50px;
+			}
+	
+			.sidebar h1{
+			display: block;
+			padding: 10px 20px;
+			color: #fff;
+			text-decoration: none;
+			letter-spacing: 2px;
+			/*font-family: 'Krona One', sans-serif;*/
+			font-weight: 400;
+			margin: 0;
+			font-size: 20px;
+			text-transform: uppercase;
+			}
+	
+			.sidebar a {
+			display: block;
+			padding: 10px 20px;
+			color: #bbb;
+			outline: none;
+			border: none;
+			background: none;
+			text-decoration: none;
+			font-family: "Helvetica";
+			letter-spacing: 1px;
+			
+			}
+	
+			.dropdown-btn{
+				font-size: 15px;
+			}
+	
+			.sidebar a:hover{
+			color: #fff;
+			margin-left: 10px;
+			transition: 0.4s;
+			}
+	
+			.sidebar a.hoverspeed:hover{
+				color: #fff;
+				margin-left: 7px;
+				transition: 0.4s;
+			}
+	
+			.sidebar a.tofMyo:hover{
+			background-color: pink;
+			color:black;
+			margin-left: 10px;
+			transition: 0.4s;
+			}
+	
+			.sidebar a.info:hover{
+				background-color: black;
+				margin-left: 10px;
+				transition: 0.4s;
+			}
 
 	</style>
 </head>
@@ -64,8 +129,11 @@
 		<form> <input type="checkbox" id="myCheck" onclick="hide2018002"> Toggle 2018002 </form>
 		<form> <input type = "checkbox" id = "myCheck2" onclick="alert('you clicked')"> Toggle 2018003 </form>-->
 
-		<button class = "tofMyo" id = "hideShow">Hide / Show 2018002-01 Myocardium</button>
-		<button class = "highRes" onclick="document.location = 'https://github.com/tgh-apil/TorontoHeartAtlas/blob/master/2018002MYO/singleColor2018002.obj'"> High Resolution Myocardium Download</button>
+		<div class="sidebar">
+			<a href="https://apil.ca/" class="hoverspeed"><img src="https://apillogo.s3.ca-central-1.amazonaws.com/APIL_LOGO.png" alt="Apil" width="175" height="75" style="vertical-align:left;margin:0px -5px"></a>
+			<a class="tofMyo" id="hideShow">2018002-01 Myocardium</a>
+			<a class = "info" onclick = "document.location = 'https://github.com/tgh-apil/TorontoHeartAtlas/blob/master/2018001MYO/2018001Myocard.obj'">High Resolution Myocardium Download</a>
+		</div>
 
 	<script src="three.js"></script>
 	<script src="OrbitControls.js"></script>
