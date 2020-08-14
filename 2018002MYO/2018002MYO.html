@@ -17,14 +17,6 @@
 			color: #f00;
 		}
 
-		/*.tofMyo{
-			background-color: pink;
-			border: 1px orange solid;
-			color: white;
-			padding: 10px 24px; 
-			cursor: pointer;
-		}*/
-
 		.highRes {
 			background-color: blue; 
 			border: 1px blue solid; 
@@ -103,32 +95,6 @@
 
 <body>
 
-
-	<!--<div class="dropdown">
-  <button class="dropbtn">2018001 FONTAN 1 Heart</button>
-  <div class="dropdown-content">
-
-
-    <a type="button" id="hideShow2">Hide / Show Pulmonary Artery</a>
-    <a type="button" id="hideShow3">Hide / Show Left Atrium</a>
-    <a type="button" id="hideShow4">Hide / Show Right Atrium</a>
-    <a type="button" id="hideShow5">Hide / Show Left Ventricle</a>
-    <a type="button" id="hideShow6">Hide / Show 2018001</a>
-		<a type="button" id="hideShow7" >Delete 2018001</a>
-  </div>
-</div>-->
-
-	<!--<button class="aorta" id="hideShow">Hide / Show Aorta</button>
-	<button class="pulmonaryArtery" id="hideShow2">Hide / Show Pulmonary Artery</button>
-	<button class="leftAtrium" id="hideShow3">Hide / Show Left Atrium</button>
-	<button class="rightAtrium" id="hideShow4">Hide / Show Right Atrium</button>
-	<button class="leftVentricle" id="hideShow5">Hide / Show Left Ventricle</button>
-	<button class="rightVentricle" id = "hideShow6">Hide / Show Right Ventricle</button>-->
-
-	<!--<button type="button" id="hideShow9" onclick="hide2018001()">Hide buttons</button>
-		<form> <input type="checkbox" id="myCheck" onclick="hide2018002"> Toggle 2018002 </form>
-		<form> <input type = "checkbox" id = "myCheck2" onclick="alert('you clicked')"> Toggle 2018003 </form>-->
-
 		<div class="sidebar">
 			<a href="https://apil.ca/" class="hoverspeed"><img src="https://apillogo.s3.ca-central-1.amazonaws.com/APIL_LOGO.png" alt="Apil" width="175" height="75" style="vertical-align:left;margin:0px -5px"></a>
 			<a class="tofMyo" id="hideShow">2018002-01 Myocardium</a>
@@ -149,25 +115,6 @@
 			document.body.appendChild(WEBGL.getWebGLErrorMessage());
 
 		}
-
-		function hide2018001() {
-			var x = document.getElementById("info2");
-			if (x.style.display === "none") {
-				x.style.display = "block";
-			} else {
-				x.style.display = "none";
-			}
-		}
-
-		function hide2018002() {
-			var y = document.getElementById("2018002");
-			if (y.style.display === "block") {
-				y.style.display = "none";
-			} else {
-				y.style.display = "block";
-			}
-		}
-
 
 		var camera, controls, scene, renderer, object, object2, object3, object4, object5;
 		var objhidden = false;
