@@ -263,7 +263,13 @@
 			transition: 0.4s;
 		}
 
-
+		.sidebar a.pink:hover{
+			background-color: pink;
+			color:black;
+			margin-left: 10px;
+			transition: 0.4s;
+			}
+	
 
 	</style>
 </head>
@@ -277,6 +283,7 @@
 		<a href="#Left Atrium" class="orange" id="hideShow3">Left Atrium</a>
 		<a href="#Right Atrium" class="skyBlue" id="hideShow4">Right Atrium</a>
 		<a href="#Left Ventricle" class="red" id="hideShow5">Left Ventricle</a>
+		<a href="#Myocardium" class="pink" id="hideShow6">2018001 Myocardium</a>
 		<a href="#" class="info" onclick="openNav()">Information</a>
 		<div id="myNav" class="overlay">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -379,16 +386,22 @@
 			// }
 
 			var oLoader = new THREE.OBJLoader();
+			var object; 
 
 			var oLoader2 = new THREE.OBJLoader();
+			var object2;
 
 			var oLoader3 = new THREE.OBJLoader();
+			var object3; 
 
 			var oLoader4 = new THREE.OBJLoader();
+			var object4;
 
 			var oLoader5 = new THREE.OBJLoader();
+			var object5; 
 
 			var oLoader6 = new THREE.OBJLoader(); 
+			var object6;
 
 			oLoader.load('aligned_aorta.obj', function(object, materials) {
 
@@ -538,6 +551,41 @@
 				scene.add(object5);
 
 				document.getElementById('hideShow5').addEventListener('click', function() {
+					object5.visible = !object5.visible;
+				});
+			});
+
+			oLoader6.load('2018001Myocard.obj', function(object6, materials) {
+
+				// var material = new THREE.MeshFaceMaterial(materials);
+				var material2 = new THREE.MeshLambertMaterial({
+					color: 0xFFC0CB
+				});
+
+				object6.traverse(function(child) {
+					if (child instanceof THREE.Mesh) {
+
+						// apply custom material
+						child.material = material2;
+
+						// enable casting shadows
+						child.castShadow = true;
+						child.receiveShadow = true;
+					}
+				});
+
+				object6.position.x = 0;
+				object6.position.y = 0;
+				object6.position.z = 0;
+				object6.scale.set(1, 1, 1);
+				scene.add(object6);
+
+				document.getElementById('hideShow6').addEventListener('click', function() {
+					object6.visible = !object6.visible;
+					object.visible = !object.visible; 
+					object2.visible = !object2.visible; 
+					object3.visible = !object3.visible; 
+					object4.visible = !object4.visible; 
 					object5.visible = !object5.visible;
 				});
 			});
