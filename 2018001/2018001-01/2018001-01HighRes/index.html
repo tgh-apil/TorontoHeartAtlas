@@ -402,9 +402,6 @@
 			var oLoader5 = new THREE.OBJLoader();
 			var object5; 
 
-			var oLoader6 = new THREE.OBJLoader(); 
-			var object6;
-
 			oLoader.load('aligned_aorta.obj', function(object, materials) {
 
 				// var material = new THREE.MeshFaceMaterial(materials);
@@ -555,44 +552,6 @@
 				document.getElementById('hideShow5').addEventListener('click', function() {
 					object5.visible = !object5.visible;
 				});
-			});
-
-			oLoader6.load('2018001Myocard.obj', function(object6, materials) {
-
-				// var material = new THREE.MeshFaceMaterial(materials);
-				var material2 = new THREE.MeshLambertMaterial({
-					color: 0xFFC0CB
-				});
-
-				object6.traverse(function(child) {
-					if (child instanceof THREE.Mesh) {
-
-						// apply custom material
-						child.material = material2;
-
-						// enable casting shadows
-						child.castShadow = true;
-						child.receiveShadow = true;
-					}
-				});
-
-				object6.position.x = 0;
-				object6.position.y = 0;
-				object6.position.z = 0;
-				object6.scale.set(1, 1, 1);
-				scene.add(object6);
-				object6.visible = false;
-
-				document.getElementById('hideShow6').addEventListener('click', function() {
-					object6.visible = !object6.visible;
-					object.visible = !object.visible;
-					
-				});
-
-			});
-
-			document.getElementById('hideShow7').addEventListener('click', function() {
-				object.visible = false; 
 			});
 
 			// lights
