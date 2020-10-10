@@ -1,75 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>2018002-01 High Resolution</title>
+		<title>three.js webgl - orbit controls</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		
 
 		<style>
-			@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
 			body {
-				background-color:  black;
+				background-color: #ccc;
 				color: #000;
-				font-family: 'Lato', sans-serif;
 			}
-
-			
 
 			a {
 				color: #f00;
 			}
 
-		.overlay {
-		height: 100%;
-		width: 0;
-		position: fixed;
-		z-index: 1;
-		top: 0;
-		left: 0;
-		background-color: rgb(0,0,0);
-		background-color: rgba(0,0,0, 0.9);
-		overflow-x: hidden;
-		transition: 0.5s;
-		}
-
-		.overlay-content {
-		position: relative;
-		top: 25%;
-		width: 100%;
-		text-align: center;
-		margin-top: 30px;
-		color: white;
-		}
-
-		.overlay a {
-		padding: 8px;
-		text-decoration: none;
-		font-size: 36px;
-		color: #818181;
-		display: block;
-		transition: 0.3s;
-		}
-
-		.overlay a:hover, .overlay a:focus {
-		color: #f1f1f1;
-		}
-
-		.overlay .closebtn {
-		position: absolute;
-		top: 20px;
-		right: 45px;
-		font-size: 60px;
-		}
-
-		@media screen and (max-height: 450px) {
-		.overlay a {font-size: 20px}
-		.overlay .closebtn {
-		font-size: 40px;
-		top: 15px;
-		right: 35px;
-		}
-		}
+			.load{
+				background-color: #b76e79; /* Rose Gold background */
+				border: 1px solid gold; /* Rose Gold border */
+				color: black; /* White text */
+				padding: 10px 24px; /* Some padding */
+				cursor: pointer; /* Pointer/hand icon */
+			}
 
 			.aorta{
 				background-color: #FFFF00; /* Yellow background */
@@ -106,148 +58,226 @@
 			}
 
 			.rightVentricle{
-				
-				background-color: #0000ff; /* Blue background */
-				border: 1px solid Blue; /* Red border */
+				background-color: #ff0000; /* Red background */
+				border: 1px solid red; /* Red border */
 				color: white; /* White text */
 				padding: 10px 24px; /* Some padding */
 				cursor: pointer; /* Pointer/hand icon */
 			}
 
 			.leftVentricle {
-				background-color: #ff0000; /* Red background */
+				background-color: #0000ff; /* Blue background */
 				border: 1px solid red; /* Blue border */
 				color: white; /* White text */
 				padding: 10px 24px; /* Some padding */
 				cursor: pointer; /* Pointer/hand icon */
 			}
 
+			.invert{
+				background-color: #800080; /* Purple background */
+				border: 1px solid purple; /* Purple border */
+				color: white; /* White text */
+				padding: 10px 24px; /* Some padding */
+				cursor: pointer; /* Pointer/hand icon */
+			}
 
-		.sidebar{
-		position: fixed;
-		width: 200px;
-		top:0;
-		left: 0;
-		bottom: 0;
-		background: grey;
-		padding-top: 50px;
-		}
+			.delete{
+				background-color: #FFD700; /* Gold background */
+				border: 1px solid gold; /* Gold border */
+				color: black; /* White text */
+				padding: 10px 24px; /* Some padding */
+				cursor: pointer; /* Pointer/hand icon */
+			}
 
-		.sidebar h1{
-		display: block;
-		padding: 10px 20px;
-		color: #fff;
-		text-decoration: none;
-		font-family: 'Krona One', sans-serif;
-		letter-spacing: 2px;
-		font-weight: 400;
-		margin: 0;
-		font-size: 20px;
-		text-transform: uppercase;
-		}
-
-		.sidebar a {
-		display: block;
-		padding: 10px 20px;
-		color: #bbb;
-		outline: none;
-		border: none;
-		background: none;
-		text-decoration: none;
-		font-family: "Rubik";
-		letter-spacing: 2px;
+			.overlay {
+				height: 100%;
+				width: 0;
+				position: fixed;
+				z-index: 1;
+				top: 0;
+				left: 0;
+				background-color: rgb(0,0,0);
+				background-color: rgba(0,0,0, 0.9);
+				overflow-x: hidden;
+				transition: 0.5s;
+				}
 		
-		}
-
-		.dropdown-btn{
-			font-size: 15px;
-		}
-
-		.sidebar a:hover{
-		color: #fff;
-		margin-left: 10px;
-		transition: 0.4s;
-		}
-
-		.sidebar a.hoverspeed:hover{
-			color: #fff;
-			margin-left: 7px;
-			transition: 0.4s;
-		}
-
-		.sidebar a.yellow{
-		background-color: yellow;
-		color:black;
-		}
-
-		.sidebar a.yellow:hover{
-		margin-left: 10px;
-		transition: 0.4s;
-		}
-
-		.sidebar a.green{
-		background-color: green;
-		color:black;
+				.overlay-content {
+				position: relative;
+				top: 25%;
+				width: 100%;
+				text-align: center;
+				margin-top: 30px;
+				color: white;
+				}
 		
-		}
-
-		.sidebar a.green:hover{
-		background-color: green;
-		color:black;
-		margin-left: 10px;
-		transition: 0.4s;
-		}
-
-		.sidebar a.orange{
-		background-color: orange;
-		color:black;
+				.overlay a {
+				padding: 8px;
+				text-decoration: none;
+				font-size: 36px;
+				color: #818181;
+				display: block;
+				transition: 0.3s;
+				}
 		
-		}
+				.overlay a:hover, .overlay a:focus {
+				color: #f1f1f1;
+				}
+		
+				.overlay .closebtn {
+				position: absolute;
+				top: 20px;
+				right: 45px;
+				font-size: 60px;
+				}
+		
+				@media screen and (max-height: 450px) {
+				.overlay a {font-size: 20px}
+				.overlay .closebtn {
+				font-size: 40px;
+				top: 15px;
+				right: 35px;
+				}
+				}
+		
+				.offset {
+					margin-right: 50px;
+				}
 
-		.sidebar a.orange:hover{
-		background-color: orange;
-		color:black;
-		margin-left: 10px;
-		transition: 0.4s;
-		}
+			.sidebar{
+				position: fixed;
+				width: 200px;
+				top:0;
+				left: 0;
+				bottom: 0;
+				background: grey;
+				padding-top: 50px;
+				}
+		
+				.sidebar h1{
+				display: block;
+				padding: 10px 20px;
+				color: #fff;
+				text-decoration: none;
+				font-family: 'Krona One', sans-serif;
+				letter-spacing: 2px;
+				font-weight: 400;
+				margin: 0;
+				font-size: 20px;
+				text-transform: uppercase;
+				}
+		
+				.sidebar a {
+				display: block;
+				padding: 10px 20px;
+				color: #bbb;
+				outline: none;
+				border: none;
+				background: none;
+				text-decoration: none;
+				font-family: "Rubik";
+				letter-spacing: 2px;
+				
+				}
+		
+				.dropdown-btn{
+					font-size: 15px;
+				}
+		
+				.sidebar a:hover{
+				color: #fff;
+				margin-left: 10px;
+				transition: 0.4s;
+				}
+		
+				.sidebar a.hoverspeed:hover{
+					color: #fff;
+					margin-left: 7px;
+					transition: 0.4s;
+				}
+		
+				.sidebar a.yellow{
+				background-color: yellow;
+				color:black;
+				}
+		
+				.sidebar a.yellow:hover{
+				margin-left: 10px;
+				transition: 0.4s;
+				}
+		
+				.sidebar a.green{
+				background-color: green;
+				color:black;
+				
+				}
+		
+				.sidebar a.green:hover{
+				background-color: green;
+				color:black;
+				margin-left: 10px;
+				transition: 0.4s;
+				}
+		
+				.sidebar a.orange{
+				background-color: orange;
+				color:black;
+				
+				}
+		
+				.sidebar a.orange:hover{
+				background-color: orange;
+				color:black;
+				margin-left: 10px;
+				transition: 0.4s;
+				}
+		
+				.sidebar a.skyBlue{
+				background-color: skyblue;
+				color:black;
+				}
+		
+				.sidebar a.skyBlue:hover{
+				background-color: skyblue;
+				color:black;
+				margin-left: 10px;
+				transition: 0.4s;
+				}
+		
+				.sidebar a.red{
+				background-color: red;
+				color:black;
+				}
+		
+				.sidebar a.red:hover{
+				margin-left: 10px;
+				transition: 0.4s;
+				}
+		
+				.sidebar a.blue{
+				background-color: blue;
+				color:black;
+				}
+		
+				.sidebar a.blue:hover{
+				margin-left: 10px;
+				transition: 0.4s;
+				}
+		
+				.sidebar a.info:hover{
+					background-color: black;
+					margin-left: 10px;
+					transition: 0.4s;
+				}
 
-		.sidebar a.skyBlue{
-		background-color: skyblue;
-		color:black;
-		}
-
-		.sidebar a.skyBlue:hover{
-		background-color: skyblue;
-		color:black;
-		margin-left: 10px;
-		transition: 0.4s;
-		}
-
-		.sidebar a.red{
-		background-color: red;
-		color:black;
-		}
-
-		.sidebar a.red:hover{
-		margin-left: 10px;
-		transition: 0.4s;
-		}
-
-		.sidebar a.blue{
-		background-color: blue;
-		color:black;
-		}
-
-		.sidebar a.blue:hover{
-		margin-left: 10px;
-		transition: 0.4s;
-		}
-
-		.sidebar a.info:hover{
-			background-color: black;
-			margin-left: 10px;
-			transition: 0.4s;
-		}
+				.sidebar a.pink:hover{
+					background-color: pink;
+					color:black;
+					margin-left: 10px;
+					transition: 0.4s;
+					}
+			
+		
 
 
 		</style>
@@ -256,56 +286,97 @@
 	<body>
 
 
-	<div class="sidebar">
-		<a href="https://apil.ca/" class="hoverspeed"><img src="https://apillogo.s3.ca-central-1.amazonaws.com/APIL_LOGO.png" alt="Apil" width="175" height="75" style="vertical-align:left;margin:0px -5px"></a>
-		<a href="#aorta" class="yellow" id="hideShow">Aorta</a>
-		<a href="#PulmonaryArtery" class="green" id="hideShow2">Pulmonary Artery</a>
-		<a href="#LeftAtrium" class="orange" id="hideShow3">Left Atrium</a>
-		<a href="#RightAtrium" class="skyBlue" id="hideShow4">Right Atrium</a>
-		<a href="#RightAtrium" class="red" id="hideShow6">Left Ventricle</a>
-		<a href="#LeftAtrium" class="blue" id="hideShow5">Right Ventricle</a>
-		<a href="#" class="info" onclick="openNav()">Information</a>
-		<div id="myNav" class="overlay">
-			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			
+
+
+<!--<button class = "load" id = "load">Load</button>
+<button class = "aorta" id="hideShow">Hide / Show Aorta</button>
+<button class = "pulmonaryArtery" id="hideShow2">Hide / Show Pulmonary Artery</button>
+<button class = "leftAtrium" id="hideShow3">Hide / Show Left Atrium</button>
+<button class = "rightAtrium" id="hideShow4">Hide / Show Right Atrium</button>
+<button class = "rightVentricle" id="hideShow8">Hide / Show Right Ventricle</button>
+<button class = "leftVentricle" id="hideShow5">Hide / Show Left Ventricle</button>
+<button class = "invert" id="hideShow6">Show Regular Heart</button>
+<button class = "delete" id="hideShow7">Show Myocardium</button>
+!-->
+
+
+<div class="sidebar">
+	<a href="https://apil.ca/" class="hoverspeed"><img src="https://apillogo.s3.ca-central-1.amazonaws.com/APIL_LOGO.png" alt="Apil" width="175" height="75" style="vertical-align:left;margin:0px -5px"></a>
+	<a href="#aorta" type = "button" class="yellow" id="hideShow">Aorta</a>
+	<a href="#PulmonaryArtery" type = "button" class="green" id="hideShow2">Pulmonary Artery</a>
+	<a href="#LeftAtrium" type = "button" class="orange" id="hideShow3">Left Atrium</a>
+	<a href="#RightAtrium" type = "button" class="skyBlue" id="hideShow4">Right Atrium</a>
+	<a href="#RightAtrium" type = "button" class="red" id="hideShow8">Right Ventricle</a>
+	<a href="#LeftAtrium" type = "button" class="blue" id="hideShow5">Left Ventricle</a>
+	<a href="#Myocardium" type = "button" class="pink" id="hideShow7">Show Myocardium</a>
+	<a href="#heart" type = "button" class="pink" id="hideShow6">Show Heart</a>
+	<a href="#" class="info" onclick="openNav()">Information</a>
+	<div id="myNav" class="overlay">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		
-		<div class="overlay-content">
-			<h1>
-				Diagnosis
-			</h1>
+	
+	<div class="overlay-content">
+		<h1>
+			Diagnosis
+		</h1>
 
-			<p>1. Tetralogy of Fallot, (uncorrected): Overriding aorta, pulmonary stenosis, <br> 
-				subaortic ventricular septal defect, right ventricular hypertrophy</p>
+		<p>1. Tetralogy of Fallot, (uncorrected): Overriding aorta, pulmonary stenosis, <br> 
+			subaortic ventricular septal defect, right ventricular hypertrophy</p>
 
-			<h1>Procedure</h1>
+		<h1>Procedure</h1>
 
-			<p>1. Remnant of BTT shunt can be seen from left subclavian artery to left pulmonary artery. <br>
-				2. No further correction until age 65. Underwent pulmonary valve replacement subsequently.</p>
-		</div>
-		</div>
+		<p>1. Remnant of BTT shunt can be seen from left subclavian artery to left pulmonary artery. <br>
+			2. No further correction until age 65. Underwent pulmonary valve replacement subsequently.</p>
 	</div>
+	</div>
+</div>
+
+
+
+
+		<!--<button type="button" id="hideShow9" onclick="hide2018001()">Hide buttons</button>
+		<form> <input type="checkbox" id="myCheck" onclick="hide2018002"> Toggle 2018002 </form>
+		<form> <input type = "checkbox" id = "myCheck2" onclick="alert('you clicked')"> Toggle 2018003 </form>-->
 
 		<script src="three.js"></script>
 		<script src="OrbitControls.js"></script>
-		<script src="OBJLoader.js"></script>
+		<script src="GLTFLoader.js"></script>
 		<script src="WebGL.js"></script>
 
 
 		<script>
 
-		function openNav() {
-		document.getElementById("myNav").style.width = "100%";
-		}
-
-		function closeNav() {
-		document.getElementById("myNav").style.width = "0%";
-		}
+			function openNav() {
+				document.getElementById("myNav").style.width = "100%";
+				}
+		
+				function closeNav() {
+				document.getElementById("myNav").style.width = "0%";
+				}
 
 			if ( WEBGL.isWebGLAvailable() === false ) {
 
 				document.body.appendChild( WEBGL.getWebGLErrorMessage() );
 
 			}
+			function hide2018001(){
+				var x = document.getElementById("info2");
+				if (x.style.display === "none"){
+					x.style.display = "block";
+				} else {
+					x.style.display = "none";
+				}
+			}
+
+			function hide2018002(){
+				var y = document.getElementById("2018002");
+				if(y.style.display === "block"){
+					y.style.display = "none";
+				} else {
+					y.style.display = "block";
+				}
+			}
+
 
 			var camera, controls, scene, renderer;
 
@@ -361,204 +432,232 @@
 				// }
 
 
+				var loader = new THREE.GLTFLoader();
+		    	var loader2 = new THREE.GLTFLoader();
+		    	var loader3 = new THREE.GLTFLoader();
+				var loader4 = new THREE.GLTFLoader();
+				var loader5 = new THREE.GLTFLoader();
+				var loader6 = new THREE.GLTFLoader();
+				var loader7 = new THREE.GLTFLoader();
+
+				loader.load('aorta002.glb', handle_load);
+				var mesh;
+				loader2.load('PA002.glb', handle_load2);
+				var mesh2;
+				loader3.load('LA2018002.glb', handle_load3);
+				var mesh3;
+				loader4.load('LV002.glb', handle_load4);
+				var mesh4;
+				loader5.load('RA002cropped.glb', handle_load5);
+				var mesh5;
+				loader6.load('RV002.glb', handle_load6);
+				var mesh6;
+				loader7.load('2018002myocardv2.glb', handle_load7);
+				var mesh7;
+				
+				
 
 
 
-				var oLoader = new THREE.OBJLoader();
 
-				var oLoader2 = new THREE.OBJLoader();
+				function handle_load(gltf) {
 
-				var oLoader3 = new THREE.OBJLoader();
+				  console.log(gltf);
+				  mesh = gltf.scene;
+				  console.log(mesh.children[0]);
+				  mesh.material = new THREE.MeshLambertMaterial();
+				  //var mesh = new THREE.mesh(material);
+				  //mesh.position.z = -10;
+				  //mesh.position.y = 0;
+				  scene.add( mesh );
 
-				var oLoader4 = new THREE.OBJLoader();
+				  //mesh.children[0].Color = new THREE.Color("rgb(100, 150, 100)");
+				    //mesh.setSize(3, 3, 3);
+				    // mesh.position.x = -60;
 
-				var oLoader5 = new THREE.OBJLoader();
 
-				var oLoader6 = new THREE.OBJLoader();
+				}
 
-				oLoader.load('aligned_aorta_TOF.obj', function(object, materials) {
+				function handle_load2(gltf){
+				  console.log(gltf);
+				  mesh2 = gltf.scene;
+				  console.log(mesh2.children[0]);
+				  mesh2.children[0].material = new THREE.MeshLambertMaterial();
+				  //var mesh = new THREE.mesh(material);
+				  scene.add( mesh2 );
+				  // mesh2.position.z = -10;
+				  // mesh2.position.y = 25;
+				  mesh2.position.x = -5;
+				}
 
-					// var material = new THREE.MeshFaceMaterial(materials);
+				function handle_load3(gltf){
+				  console.log(gltf);
+				  mesh3 = gltf.scene;
+				  console.log(mesh3.children[0]);
+				  mesh3.children[0].material = new THREE.MeshLambertMaterial();
+				  scene.add( mesh3 );
+				  mesh3.position.z = 5;
+				  mesh3.position.y = -15;
+				  mesh3.position.x = 15;
+				}
+
+				function handle_load4(gltf){
+				  console.log(gltf);
+				  mesh4 = gltf.scene;
+				  console.log(mesh4.children[0]);
+				  mesh4.children[0].material = new THREE.MeshLambertMaterial();
+				  scene.add( mesh4 );
+				  mesh4.position.z = 10;
+				  mesh4.position.y = -70;
+				  mesh4.position.x = -35;
+				  //mesh6.rotation.x = 180;
+				  //mesh6.rotation.z = 40;
+				  // mesh4.rotation.z = -0.5;
+				  // mesh4.rotation.x = 270;
+				}
+
+				function handle_load5(gltf){
+				  console.log(gltf);
+				  mesh5 = gltf.scene;
+				  console.log(mesh5.children[0]);
+				  mesh5.children[0].material = new THREE.MeshLambertMaterial();
+				  scene.add( mesh5 );
+				  // mesh5.position.z = 30;
+				  // mesh5.position.y = -60;
+				  // mesh5.position.x = 50;
+				  mesh5.position.x = 40;
+				  mesh5.position.y = -30;
+				  mesh5.position.z = -25;
+				}
+
+				function handle_load6(gltf){
+				  console.log(gltf);
+				  mesh6 = gltf.scene;
+				  console.log(mesh6.children[0]);
+				  mesh6.children[0].material = new THREE.MeshLambertMaterial();
+				  scene.add( mesh6 );
+				  mesh6.position.z = -20;
+				  mesh6.position.y = -80;
+				  mesh6.position.x = -13;
+				  //mesh6.rotation.x = 180;
+				  //mesh6.rotation.z = 40;
+				  //mesh6.rotation.z = -0.5;
+				  //mesh6.rotation.x = 270;
+				  ;
+				}
+
+				function handle_load7(gltf){
+					console.log(gltf);
+					mesh7 = gltf.scene;
+					console.log(mesh7.children[0]);
+					mesh7.children[0].material = new THREE.MeshLambertMaterial();
+					//scene.add( mesh6 );
 					var material2 = new THREE.MeshLambertMaterial({
-						color: 0xa65e00
+						color: 0xFFB6C1
 					});
-
-					object.traverse(function(child) {
+	
+					mesh7.traverse(function(child) {
 						if (child instanceof THREE.Mesh) {
-
+	
 							// apply custom material
 							child.material = material2;
-
+	
 							// enable casting shadows
 							child.castShadow = true;
 							child.receiveShadow = true;
 						}
 					});
+					mesh7.position.z = 0;
+					mesh7.position.y = 0;
+					mesh7.position.x = 0;
+					//scene.add(mesh7);
+					//mesh6.rotation.x = 180;
+					//mesh6.rotation.z = 40;
+					//mesh6.rotation.z = -0.5;
+					//mesh6.rotation.x = 270;
+					;
+				  }
 
-					object.position.x = 0;
-					object.position.y = 0;
-					object.position.z = 0;
 
-					object.scale.set(1, 1, 1);
-					scene.add(object);
 
-					document.getElementById('hideShow').addEventListener('click', function() {
-						object.visible = !object.visible;
-					});
-				});
+		   
 
-				oLoader2.load('aligned_pa_TOF.obj', function(object2, materials) {
+		    var toggleButton = document.getElementById('hideShow');
+		    toggleButton.addEventListener('click', function() {
+		      mesh.visible = ! mesh.visible;
+		    });
 
-					// var material = new THREE.MeshFaceMaterial(materials);
-					var material2 = new THREE.MeshLambertMaterial({
-						color: 0x008000
-					});
+		    var toggleButton = document.getElementById('hideShow2');
+		    toggleButton.addEventListener('click', function() {
+		      mesh2.visible = ! mesh2.visible;
+		    });
 
-					object2.traverse(function(child) {
-						if (child instanceof THREE.Mesh) {
+		    var toggleButton = document.getElementById('hideShow3');
+		    toggleButton.addEventListener('click', function() {
+		      mesh3.visible = ! mesh3.visible;
 
-							// apply custom material
-							child.material = material2;
+		    });
 
-							// enable casting shadows
-							child.castShadow = true;
-							child.receiveShadow = true;
-						}
-					});
+				var toggleButton = document.getElementById('hideShow4');
+			 	 toggleButton.addEventListener('click', function() {
+				 mesh5.visible = ! mesh5.visible;
 
-					object2.position.x = 0;
-					object2.position.y = 0;
-					object2.position.z = 0;
-					object2.scale.set(1, 1, 1);
-					scene.add(object2);
+			 });
 
-					document.getElementById('hideShow2').addEventListener('click', function() {
-						object2.visible = !object2.visible;
-					});
+				var toggleButton = document.getElementById('hideShow5');
+			 	 toggleButton.addEventListener('click', function() {
+				 mesh4.visible = ! mesh4.visible;
 
-				});
+			 });
 
-				oLoader3.load('aligned_la_TOF.obj', function(object3, materials) {
+			 var toggleButton = document.getElementById('hideShow8');
+				toggleButton.addEventListener('click', function() {
+				mesh6.visible = ! mesh6.visible;
 
-					// var material = new THREE.MeshFaceMaterial(materials);
-					var material2 = new THREE.MeshLambertMaterial({
-						color: 0xFF4500
-					});
+			});
 
-					object3.traverse(function(child) {
-						if (child instanceof THREE.Mesh) {
+			 var toggleButton = document.getElementById('hideShow6');
+				toggleButton.addEventListener('click', function() {
 
-							// apply custom material
-							child.material = material2;
+					scene.add(mesh);
+					scene.add(mesh2);
+					scene.add(mesh3);
+					scene.add(mesh4);
+					scene.add(mesh5);
+					scene.add(mesh6);
+					scene.remove(mesh7);
+				// scene.remove(mesh);
+				// scene.remove(mesh2);
+				// scene.remove(mesh3);
+				// scene.remove(mesh4);
+				// scene.remove(mesh5);
 
-							// enable casting shadows
-							child.castShadow = true;
-							child.receiveShadow = true;
-						}
-					});
+			});
 
-					object3.position.x = 0;
-					object3.position.y = 0;
-					object3.position.z = 0;
-					object3.scale.set(1, 1, 1);
-					scene.add(object3);
+			 var toggleButton = document.getElementById('hideShow7');
+				toggleButton.addEventListener('click', function() {
+				//mesh.visible = ! mesh.visible;
+				// mesh2.visible = ! mesh2.visible;
+				// mesh3.visible = ! mesh3.visible;
+				// mesh4.visible = ! mesh4.visible;
+				// mesh5.visible = ! mesh5.visible;
+				scene.remove(mesh);
+				scene.remove(mesh2);
+				scene.remove(mesh3);
+				scene.remove(mesh4);
+				scene.remove(mesh5);
+				scene.remove(mesh6);
+				scene.add(mesh7);
+				//document.getElementById("mesh").checked = false;
 
-					document.getElementById('hideShow3').addEventListener('click', function() {
-						object3.visible = !object3.visible;
-					});
-				});
 
-				oLoader4.load('aligned_ra_TOF.obj', function(object4, materials) {
+			});
 
-					// var material = new THREE.MeshFaceMaterial(materials);
-					var material2 = new THREE.MeshLambertMaterial({
-						color: 0x1e90ff
-					});
 
-					object4.traverse(function(child) {
-						if (child instanceof THREE.Mesh) {
 
-							// apply custom material
-							child.material = material2;
-
-							// enable casting shadows
-							child.castShadow = true;
-							child.receiveShadow = true;
-						}
-					});
-
-					object4.position.x = 0;
-					object4.position.y = 0;
-					object4.position.z = 0;
-					object4.scale.set(1, 1, 1);
-					scene.add(object4);
-
-					document.getElementById('hideShow4').addEventListener('click', function() {
-						object4.visible = !object4.visible;
-					});
-				});
-
-				oLoader5.load('aligned_rv_TOF.obj', function(object5, materials) {
-
-					// var material = new THREE.MeshFaceMaterial(materials);
-					var material2 = new THREE.MeshLambertMaterial({
-						color: 0x0000ff
-					});
-
-					object5.traverse(function(child) {
-						if (child instanceof THREE.Mesh) {
-
-							// apply custom material
-							child.material = material2;
-
-							// enable casting shadows
-							child.castShadow = true;
-							child.receiveShadow = true;
-						}
-					});
-
-					object5.position.x = 0;
-					object5.position.y = 0;
-					object5.position.z = 0;
-					object5.scale.set(1, 1, 1);
-					scene.add(object5);
-
-					document.getElementById('hideShow5').addEventListener('click', function() {
-						object5.visible = !object5.visible;
-					});
-				});
-
-				oLoader6.load('aligned_lv_TOF.obj', function(object6, materials) {
-
-					// var material = new THREE.MeshFaceMaterial(materials);
-					var material2 = new THREE.MeshLambertMaterial({
-						color: 0xFF0000
-					});
-
-					object6.traverse(function(child) {
-						if (child instanceof THREE.Mesh) {
-
-							// apply custom material
-							child.material = material2;
-
-							// enable casting shadows
-							child.castShadow = true;
-							child.receiveShadow = true;
-						}
-					});
-
-					object6.position.x = 0;
-					object6.position.y = 0;
-					object6.position.z = 0;
-					object6.scale.set(1, 1, 1);
-					scene.add(object6);
-
-					document.getElementById('hideShow6').addEventListener('click', function() {
-						object6.visible = !object6.visible;
-					});
-				});
 
 				// lights
+
 
 				var light = new THREE.DirectionalLight( 0xffffff, 2 );
 				light.position.set( 1, 1, 1 );
@@ -580,9 +679,8 @@
 				light.position.set(  -50,  -30 ,  40 );
 				scene.add( light );
 
-				// var light = new THREE.AmbientLight( 0x222222, 2 );
-				// scene.add( light );
 
+				
 				//
 
 				window.addEventListener( 'resize', onWindowResize, false );
