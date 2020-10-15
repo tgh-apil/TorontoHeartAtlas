@@ -243,6 +243,13 @@
 			transition: 0.4s;
 		}
 
+		.sidebar a.pink:hover{
+			background-color: pink;
+			color:black;
+			margin-left: 10px;
+			transition: 0.4s;
+			}
+
 		</style>
 	</head>
 
@@ -268,6 +275,8 @@
 			<a href="#RightAtrium" class="skyBlue" id="hideShow5">Right Atrium</a>
 			<a href="#RightVentricle" class="red" id="hideShow4">Left Ventricle</a>
 			<a href="#LeftAtrium" class="blue" id="hideShow6">Right Ventricle</a>
+			<a href="#Myocardium" class="pink" id="hideShow7">Show 2018005 Myocardium</a>
+			<a href="#Heart" class="pink" id="hideShow8">Show Heart</a>
 			<a href="#" class="info" onclick="openNav()">Information</a>
 			<div id="myNav" class="overlay">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -373,12 +382,30 @@
 
 				var oLoader6 = new THREE.OBJLoader();
 
+				var oLoader7 = new THREE.OBJLoader();
+
+				var mesh;
+
+				var mesh2;
+
+				var mesh3;
+
+				var mesh4;
+
+				var mesh5;
+
+				var mesh6;
+
+				var mesh7;
+
 				oLoader.load('yasui_ao.obj', function(object, materials) {
 
 					// var material = new THREE.MeshFaceMaterial(materials);
 					var material2 = new THREE.MeshLambertMaterial({
 						color: 0xa65e00
 					});
+
+					mesh = object;
 
 					object.traverse(function(child) {
 						if (child instanceof THREE.Mesh) {
@@ -411,6 +438,8 @@
 						color: 0x008000
 					});
 
+					mesh2 = object2;
+
 					object2.traverse(function(child) {
 						if (child instanceof THREE.Mesh) {
 
@@ -442,6 +471,8 @@
 						color: 0xFF4500
 					});
 
+					mesh3 = object3;
+
 					object3.traverse(function(child) {
 						if (child instanceof THREE.Mesh) {
 
@@ -471,6 +502,8 @@
 					var material2 = new THREE.MeshLambertMaterial({
 						color: 0xFF0000
 					});
+
+					mesh4 = object4;
 
 					object4.traverse(function(child) {
 						if (child instanceof THREE.Mesh) {
@@ -502,6 +535,8 @@
 						color: 0x1e90ff
 					});
 
+					mesh5 = object5;
+
 					object5.traverse(function(child) {
 						if (child instanceof THREE.Mesh) {
 
@@ -532,6 +567,8 @@
 						color: 0x0000FF
 					});
 
+					mesh6 = object6;
+
 					object6.traverse(function(child) {
 						if (child instanceof THREE.Mesh) {
 
@@ -553,6 +590,56 @@
 					document.getElementById('hideShow6').addEventListener('click', function() {
 						object6.visible = !object6.visible;
 					});
+				});
+
+				oLoader7.load('lowPoly2018005-01.obj', function(object7, materials) {
+
+					// var material = new THREE.MeshFaceMaterial(materials);
+					var material2 = new THREE.MeshLambertMaterial({
+						color: 0xFFC0CB
+					});
+
+					mesh7 = object7;
+
+					object7.traverse(function(child) {
+						if (child instanceof THREE.Mesh) {
+
+							// apply custom material
+							child.material = material2;
+
+							// enable casting shadows
+							child.castShadow = true;
+							child.receiveShadow = true;
+						}
+					});
+
+					object7.position.x = 0;
+					object7.position.y = 0;
+					object7.position.z = 0;
+					object7.scale.set(1, 1, 1);
+					scene.add(object7);
+
+					
+				});
+
+				document.getElementById('hideShow7').addEventListener('click', function() {
+					scene.remove(mesh);
+					scene.remove(mesh2);
+					scene.remove(mesh3);
+					scene.remove(mesh4);
+					scene.remove(mesh5);
+					scene.remove(mesh6);
+					scene.add(mesh7);
+				});
+
+				document.getElementById('hideShow8').addEventListener('click', function() {
+					scene.add(mesh);
+					scene.add(mesh2);
+					scene.add(mesh3);
+					scene.add(mesh4);
+					scene.add(mesh5);
+					scene.add(mesh6);
+					scene.remove(mesh7);
 				});
 
 				// lights
