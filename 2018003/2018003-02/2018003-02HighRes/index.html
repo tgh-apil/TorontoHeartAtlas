@@ -445,12 +445,34 @@
 
 			var oLoader6 = new THREE.OBJLoader();
 
+			var oLoader7 = new THREE.OBJLoader();
+
+			var oLoader8 = new THREE.OBJLoader();
+
+			var mesh;
+
+			var mesh2;
+
+			var mesh3;
+
+			var mesh4;
+
+			var mesh5;
+
+			var mesh6;
+
+			var mesh7;
+
+			var mesh8;
+
 			oLoader.load('2018003_AO.obj', function(object, materials) {
 
 				// var material = new THREE.MeshFaceMaterial(materials);
 				var material2 = new THREE.MeshLambertMaterial({
 					color: 0xa65e00
 				});
+
+				mesh = object;
 
 				object.traverse(function(child) {
 					if (child instanceof THREE.Mesh) {
@@ -482,6 +504,8 @@
 				var material2 = new THREE.MeshLambertMaterial({
 					color: 0x008000
 				});
+
+				mesh2 = object2;
 
 				object2.traverse(function(child) {
 					if (child instanceof THREE.Mesh) {
@@ -515,6 +539,8 @@
 					color: 0x1e90ff
 				});
 
+				mesh3 = object3;
+
 				object3.traverse(function(child) {
 					if (child instanceof THREE.Mesh) {
 
@@ -545,6 +571,8 @@
 					color: 0xFF4500
 				});
 
+				mesh4 = object4;
+
 				object4.traverse(function(child) {
 					if (child instanceof THREE.Mesh) {
 
@@ -574,6 +602,8 @@
 				var material2 = new THREE.MeshLambertMaterial({
 					color: 0xFF0000
 				});
+
+				mesh5 = object5;
 
 				object5.traverse(function(child) {
 					if (child instanceof THREE.Mesh) {
@@ -606,6 +636,8 @@
 					
 				});
 
+				mesh6 = object6;
+
 				object6.traverse(function(child) {
 					if (child instanceof THREE.Mesh) {
 
@@ -628,6 +660,39 @@
 					object6.visible = !object6.visible;
 				});
 				});
+
+				oLoader7.load('2018003_RV.obj', function(object7, materials) {
+
+					// var material = new THREE.MeshFaceMaterial(materials);
+					var material2 = new THREE.MeshLambertMaterial({
+						color: 0x0000FF
+						
+					});
+	
+					mesh7 = object7;
+	
+					object7.traverse(function(child) {
+						if (child instanceof THREE.Mesh) {
+	
+							// apply custom material
+							child.material = material2;
+	
+							// enable casting shadows
+							child.castShadow = true;
+							child.receiveShadow = true;
+						}
+					});
+	
+					object7.position.x = 0;
+					object7.position.y = 0;
+					object7.position.z = 0;
+					object7.scale.set(1, 1, 1);
+					scene.add(object7);
+	
+					document.getElementById('hideShow7').addEventListener('click', function() {
+						object7.visible = !object7.visible;
+					});
+					});
 
 
 			// lights
