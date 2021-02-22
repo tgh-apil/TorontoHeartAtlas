@@ -146,36 +146,6 @@ margin-left: 10px;
 transition: 0.4s;
 }
 
-.sidebar a.green{
-background-color: green;
-color:black;
-}
-
-.sidebar a.green:hover{
-margin-left: 10px;
-transition: 0.4s;
-}
-
-.sidebar a.skyBlue{
-background-color: skyBlue;
-color:black;
-}
-
-.sidebar a.skyBlue:hover{
-margin-left: 10px;
-transition: 0.4s;
-}
-
-.sidebar a.orange{
-background-color: orange;
-color:black;
-}
-
-.sidebar a.orange:hover{
-margin-left: 10px;
-transition: 0.4s;
-}
-
 .sidebar a.info:hover{
 background-color: black;
 margin-left: 10px;
@@ -189,10 +159,8 @@ transition: 0.4s;
 	<div class="sidebar">
 		<a href="https://apil.ca/" class="hoverspeed"><img src="https://apillogo.s3.ca-central-1.amazonaws.com/APIL_LOGO.png" alt="Apil" width="175" height="75" style="vertical-align:left;margin:0px -5px"></a>
 		<a href="#Aorta" class="yellow" id="hideShow">Aorta</a>
-		<a href="#Pulmonary Artery" class="green" id="hideShow2">Pulmonary Artery</a>
-		<a href="#Left Atrium" class="orange" id="hideShow3">Left Atrium</a>
-		<a href="#Right Atrium" class="skyBlue" id="hideShow4">Right Atrium</a>
-		<a href="#Left Ventricle" class="red" id="hideShow5">Left Ventricle</a>
+		<a href="#atriaVentricle" class="red" id="hideShow2">Atria Ventricle</a>
+		<a href="#venaCava" class="blue" id="hideShow3">Vena Cava</a>
 </div>
 	<script src="three.js"></script>
 	<script src="OrbitControls.js"></script>
@@ -202,7 +170,7 @@ transition: 0.4s;
 
 	<script>
 
-		var camera, controls, scene, renderer, object, object2, object3, object4, object5, object6;
+		var camera, controls, scene, renderer, object, object2, object3, object4, object5;
 		var objhidden = false;
 		init();
 
@@ -235,10 +203,8 @@ transition: 0.4s;
 			var oLoader = new THREE.OBJLoader();
 			var oLoader2 = new THREE.OBJLoader();
 			var oLoader3 = new THREE.OBJLoader();
-			var oLoader4 = new THREE.OBJLoader();
-			var oLoader5 = new THREE.OBJLoader();
 
-			oLoader.load('aligned_aorta.obj', function(object, materials) {
+			oLoader.load('aorta.obj', function(object, materials) {
 
 				// var material = new THREE.MeshFaceMaterial(materials);
 				var material2 = new THREE.MeshLambertMaterial({
@@ -267,11 +233,11 @@ transition: 0.4s;
 			});
 			});
 
-			oLoader2.load('aligned_pa.obj', function(object2, materials) {
+			oLoader2.load('leftVentricle.obj', function(object2, materials) {
 
 				// var material = new THREE.MeshFaceMaterial(materials);
 				var material2 = new THREE.MeshLambertMaterial({
-					color: 0x008000
+					color: 0xff0000
 				});
 
 			object2.traverse(function(child) {
@@ -296,11 +262,11 @@ transition: 0.4s;
 			});
 			});
 
-			oLoader3.load('aligned_la.obj', function(object3, materials) {
+			oLoader3.load('rightVentricle.obj', function(object3, materials) {
 
 				// var material = new THREE.MeshFaceMaterial(materials);
 				var material2 = new THREE.MeshLambertMaterial({
-					color: 0xFF0000
+					color: 0x0000ff
 				});
 
 			object3.traverse(function(child) {
@@ -325,64 +291,6 @@ transition: 0.4s;
 			});
 			});
 
-			oLoader4.load('aligned_ra.obj', function(object4, materials) {
-
-				// var material = new THREE.MeshFaceMaterial(materials);
-				var material2 = new THREE.MeshLambertMaterial({
-					color: 0xFF0000
-				});
-
-			object4.traverse(function(child) {
-					if (child instanceof THREE.Mesh) {
-
-						// apply custom material
-					child.material = material2;
-					// enable casting shadows
-					child.castShadow = true;
-					child.receiveShadow = true;
-				}
-			});
-
-			object4.position.x = 0;
-			object4.position.y = 0;
-			object4.position.z = 0;
-			object4.scale.set(1, 1, 1);
-			scene.add(object4);
-
-			document.getElementById('hideShow4').addEventListener('click', function() {
-				object4.visible = !object4.visible;
-			});
-			});
-
-			oLoader5.load('aligned_lv.obj', function(object5, materials) {
-
-				// var material = new THREE.MeshFaceMaterial(materials);
-				var material2 = new THREE.MeshLambertMaterial({
-					color: 0xFF0000
-				});
-
-			object5.traverse(function(child) {
-					if (child instanceof THREE.Mesh) {
-
-						// apply custom material
-					child.material = material2;
-					// enable casting shadows
-					child.castShadow = true;
-					child.receiveShadow = true;
-				}
-			});
-
-			object5.position.x = 0;
-			object5.position.y = 0;
-			object5.position.z = 0;
-			object5.scale.set(1, 1, 1);
-			scene.add(object5);
-
-			document.getElementById('hideShow5').addEventListener('click', function() {
-				object5.visible = !object5.visible;
-			});
-			});
-
 			// lights
 			var light = new THREE.DirectionalLight(0xffffff, 2);
 			light.position.set(1, 1, 1);
@@ -400,7 +308,7 @@ transition: 0.4s;
 
 			// lights
 			var light = new THREE.DirectionalLight(0xffffff, 2);
-			light.position.set(-50, -30 , 40);
+			light.position.set(-50, -30, 40);
 			scene.add(light);
 
 			window.addEventListener('resize', onWindowResize, false);

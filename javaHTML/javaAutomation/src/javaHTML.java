@@ -33,15 +33,14 @@ public class javaHTML {
 
         Scanner myObj = new Scanner(System.in); // Create a Scanner object
 
-        System.out.println("Will you be creating a new file or updating a pre-existing file? ");
-        newFile = myObj.nextInt();
-
-        if (newFile == 1) {
-            name1 = "";
-            name2 = "";
-            name3 = "";
-            newFile(name1, name2, name3);
-        }
+        /*
+         * System.out.
+         * println("Will you be creating a new file or updating a pre-existing file? ");
+         * newFile = myObj.nextInt();
+         * 
+         * if (newFile == 1) { name1 = ""; name2 = ""; name3 = ""; newFile(name1, name2,
+         * name3); }
+         */
 
         System.out.println("How many STL's are being used? Choices: | 3 | 4 | 5 | 6 |");
         int choice = myObj.nextInt();
